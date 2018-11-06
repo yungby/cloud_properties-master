@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost:3306/server_oauth?useUnicode=true&characterEncoding=utf8&useSSL=false
+      username: root
+      password: root
+      initial-size: 5
+      max-active: 20
+      min-idle: 10
+      max-wait: 10
+      filters: stat,wall
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 2000
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: '*.gif,*.png,*.jpg,*.html,*.js,*.css,*.ico,/druid/*'
+      stat-view-servlet:
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: druid
+        login-password: druid
+
+  thymeleaf:
+    cache: false
